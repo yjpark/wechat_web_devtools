@@ -1,11 +1,12 @@
 {
   "name": "wxdt",
   "version": "v0.19.191100",
+  "weVersion": "0.19.191100",
+  "nwjsVersion": "0.19.4",
   "description": "凌晨三点终于搞定了linux下开发者工具的使用,已经完美使用,之后上完整安装教程和npm包.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "sh bin/wxdt install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "wxdt": "bin/wxdt"
@@ -27,5 +28,9 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-replace": "^0.6.1"
+  },
+  "dependencies": {
+    "commander": "^2.11.0",
+    "shelljs": "^0.7.8"
   }
 }
