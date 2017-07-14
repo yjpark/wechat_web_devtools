@@ -12,6 +12,7 @@ fi
 
 # TODO 能不能删
 need_remove="$HOME/.config/微信web开发者工具"
-if [ -d $need_remove ]; then
-  rm -rfv $need_remove
-fi
+
+rm -rfv $need_remove
+
+echo "卸载完成"
