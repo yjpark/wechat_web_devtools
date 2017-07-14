@@ -1,37 +1,33 @@
-#! /bin/bash
+#!/usr/bin/env node
+'use strict'
 
-root_dir=$(cd `dirname $0`/.. && pwd -P)
+process.env.NODE_PATH = __dirname + '/../node_modules/'
 
-nwjs_v=`cat $root_dir/nwjs_v`
+const program = require('commander')
+const shell = require('shelljs')
+const path = require('path')
+const packageObj = require('../package')
 
-cur_nwjs_v=""
+program
+  .version(`${packageObj.version}/official ${packageObj.weVersion}/nwjs ${packageObj.nwjsVersion}`)
 
-if [ -f "$root_dir/dist/nwjs_version" ]; then
-  cur_nwjs_v=`cat "$root_dir/dist/nwjs_version"`
-fi
+program
+  .usage('<command>')
 
-if [ "$cur_nwjs_v" != "$nwjs_v" ]; then
-  echo "安装微信开发者工具对应nwjs版本：$nwjs_v"
-  bash "$root_dir/bin/update_nwjs.sh"
-fi
+program
+  .command('start [--debug]', '启动微信web开发者工具', { isDefault: true })
+  .option('-D, --debug [port]', '开启debug模式', /^[1-9]\d{1,3}$/)
+  .action((name, commond) => {
+    let execCommon = path.resolve(__dirname, '../dist/nw')
+    if (commond.debug) {
+      const port = commond.debug === true
+        ? 9222
+        : commond.debug
 
-cd "$root_dir/dist"
+      execCommon += ` --remote-debugging-port=${port}`
+      console.info(`remote-debugging-port @ ${port}`)
+    }
+    shell.exec(execCommon)
+  })
 
-want=${1:-"start"}
-if [ $want = "start" ]; then
-  `./nw`
-elif [ $want = "install" ]; then
-  bash "$root_dir/bin/replace_weapp_vendor.sh"
-  bash "$root_dir/bin/install_desktop.sh"
-  echo "安装完成"
-elif [ $want = "debug" ]; then
-  port=9222
-  `./nw --remote-debugging-port=$port`
-  echo "remote-debugging-port:$port"
-elif [ $want = "uninstall" ]; then
-  bash "$root_dir/bin/uninstall.sh"
-  echo "卸载完成,请在退出开发者工具后手动删除此项目目录"
-else
-  echo "不支持$want操作"
-  exit 127
-fi
+program.parse(process.argv)
