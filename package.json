@@ -3,7 +3,7 @@
   "version": "v0.19.191100",
   "weVersion": "0.19.191100",
   "nwjsVersion": "0.19.4",
-  "description": "凌晨三点终于搞定了linux下开发者工具的使用,已经完美使用,之后上完整安装教程和npm包.",
+  "description": "linux下使用微信web开发者工具.",
   "main": "index.js",
   "scripts": {
     "postinstall": "scripts/install.sh",
@@ -18,7 +18,9 @@
     "url": "git+https://github.com/cytle/wechat_web_devtools.git"
   },
   "keywords": [
+    "linux",
     "微信开发者工具",
+    "linux微信开发者工具",
     "微信小程序"
   ],
   "author": "xsp",
