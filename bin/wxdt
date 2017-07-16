@@ -21,7 +21,7 @@ function resolveProjectPath(f) {
 }
 
 function resolveDistPath(f) {
-  return path.resolve(process.env.HOME, '.wechat_dev_tools/' + f)
+  return path.resolve(__dirname, '../.wechat_dev_tools/' + f)
 }
 
 var nwjsVersion = getVersion(resolveProjectPath('nwjs_v'))

@@ -1,10 +1,10 @@
 {
   "name": "wxdt",
-  "version": "v0.19.191104",
+  "version": "v0.19.191106",
   "description": "linux下使用微信web开发者工具.",
   "main": "index.js",
   "scripts": {
-    "install": "ln -sf real_node_modules package.nw/node_modules",
+    "install": "sh ./scripts/install_nwjs.sh",
     "preuninstall": "scripts/uninstall.sh",
     "prepublishOnly": "eslint ./bin",
     "start": "bin/wxdt"

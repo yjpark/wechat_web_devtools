@@ -37,7 +37,6 @@ mkdir -p "$dist_dir"
 
 cp -r "$nwjs_dir"/* "$dist_dir"
 ln -sf "$root_dir/package.nw" "$dist_dir/package.nw"
-ln -sf "$root_dir/package.nw/real_node_modules" "$dist_dir/node_modules"
 
 echo "$nwjs_v" > "$dist_dir/nwjs_version"
 
