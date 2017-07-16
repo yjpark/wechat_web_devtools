@@ -1,37 +1,62 @@
-#! /bin/bash
+#!/usr/bin/env node
+'use strict'
 
-root_dir=$(cd `dirname $0`/.. && pwd -P)
+var program = require('commander')
+var shell = require('shelljs')
+var path = require('path')
+var packageObj = require('../package')
+var fs = require('fs')
 
-nwjs_v=`cat $root_dir/nwjs_v`
 
-cur_nwjs_v=""
+function getVersion(versionFile) {
+  // 同步读取
+  if (fs.existsSync(versionFile)) {
+    return fs.readFileSync(versionFile).toString().trim()
+  }
+  return ''
+}
 
-if [ -f "$root_dir/dist/nwjs_version" ]; then
-  cur_nwjs_v=`cat "$root_dir/dist/nwjs_version"`
-fi
 
-if [ "$cur_nwjs_v" != "$nwjs_v" ]; then
-  echo "安装微信开发者工具对应nwjs版本：$nwjs_v"
-  bash "$root_dir/bin/update_nwjs.sh"
-fi
+function resolveProjectPath(f) {
+  return path.resolve(__dirname, '../' + f)
+}
 
-cd "$root_dir/dist"
 
-want=${1:-"start"}
-if [ $want = "start" ]; then
-  `./nw`
-elif [ $want = "install" ]; then
-  bash "$root_dir/bin/replace_weapp_vendor.sh"
-  bash "$root_dir/bin/install_desktop.sh"
-  echo "安装完成"
-elif [ $want = "debug" ]; then
-  port=9222
-  `./nw --remote-debugging-port=$port`
-  echo "remote-debugging-port:$port"
-elif [ $want = "uninstall" ]; then
-  bash "$root_dir/bin/uninstall.sh"
-  echo "卸载完成,请在退出开发者工具后手动删除此项目目录"
-else
-  echo "不支持$want操作"
-  exit 127
-fi
+function resolveDistPath(f) {
+  return path.resolve(process.env.HOME, '.wechat_dev_tools/' + f)
+}
+
+var nwjsVersion = getVersion(resolveProjectPath('nwjs_v'))
+var packageVersion = getVersion(resolveProjectPath('package_v'))
+
+program
+  .version(packageObj.version + '/package ' + packageVersion  + '/nwjs ' + nwjsVersion)
+  .usage('[--debug [port]]')
+  .description('启动微信web开发者工具')
+  .option('-D, --debug [port]', '开启debug模式', /^[1-9]\d{1,3}$/)
+  .parse(process.argv)
+
+var currentNwjsVersion = getVersion(resolveDistPath('nwjs_version'))
+
+if (currentNwjsVersion !== nwjsVersion) {
+  console.log('安装微信开发者工具对应nwjs版本：$nwjs_v')
+  shell.exec(resolveProjectPath('scripts/install_nwjs.sh'))
+  shell.exec(resolveProjectPath('scripts/install_weapp_vendor.sh'))
+  console.log('安装完成')
+}
+
+if (currentNwjsVersion === '') {
+  shell.exec(resolveProjectPath('scripts/install_desktop.sh'))
+}
+
+var execCommon = resolveDistPath('nw')
+if (program.debug) {
+  var port = program.debug === true
+    ? 9222
+    : program.debug
+
+  execCommon += ' --remote-debugging-port=' + port
+  console.info('remote-debugging-port@' + port)
+}
+
+shell.exec(execCommon)

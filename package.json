@@ -1,11 +1,12 @@
 {
   "name": "wxdt",
-  "version": "v0.19.191100",
-  "description": "凌晨三点终于搞定了linux下开发者工具的使用,已经完美使用,之后上完整安装教程和npm包.",
+  "version": "v0.19.191101",
+  "description": "linux下使用微信web开发者工具.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "sh bin/wxdt install"
+    "preuninstall": "scripts/uninstall.sh",
+    "prepublishOnly": "eslint ./bin",
+    "start": "bin/wxdt"
   },
   "bin": {
     "wxdt": "bin/wxdt"
@@ -15,7 +16,9 @@
     "url": "git+https://github.com/cytle/wechat_web_devtools.git"
   },
   "keywords": [
+    "linux",
     "微信开发者工具",
+    "linux微信开发者工具",
     "微信小程序"
   ],
   "author": "xsp",
@@ -24,8 +27,11 @@
     "url": "https://github.com/cytle/wechat_web_devtools/issues"
   },
   "homepage": "https://github.com/cytle/wechat_web_devtools#readme",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "shelljs": "^0.7.8"
+  },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-replace": "^0.6.1"
+    "eslint": "^4.2.0"
   }
 }
