@@ -21,9 +21,7 @@ linux下使用微信web开发者工具.
 ## Usage
 
 ```console
-git clone git@github.com:cytle/wechat_web_devtools.git
-cd wechat_web_devtools
-./bin/wxdt
+npm install -g wxdt
 ```
 
 ### 需要小程序开发
@@ -42,7 +40,7 @@ WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
 3. 安装
 
 ```console
-./bin/wxdt install
+sudo npm install -g wxdt
 ```
 
 4. 启动
@@ -53,17 +51,8 @@ WINEARCH=win32 WINEPREFIX=~/.wine32 winecfg
 
 ## 更新
 
-直接pull就好了
-
 ```console
-git pull origin
-```
-
-如果wcc和wcsc编译有问题，执行以下，让工具重新生成wcc和wcsc，**会删除开发者工具配置文件,所有工程和登录信息会消失**
-
-```console
-./bin/wxdt uninstall
-./bin/wxdt install
+sudo npm install -g wxdt
 ```
 
 ### 更新到最新版
@@ -73,14 +62,14 @@ git pull origin
 1. 执行脚本会自动下载安装最新开发者工具（window x64）
 
 ```console
-./bin/replace_package_nw.sh
+sudo ./scripts/update_package_nw.sh
 ```
 
 2. 安装过程中确认安装到`$HOME/.wine/drive_c/Program Files (x86)/Tencent/微信web开发者工具`路径下
 
 3. 最后完成去掉打开开发者工具的钩
 
-然后执行`./bin/wxdt`，如果没有问题欢迎提PR~
+然后执行`wxdt`，如果没有问题欢迎提PR~
 
 
 ## 截图
@@ -95,15 +84,8 @@ git pull origin
 
 上面项目来自https://github.com/jectychen/wechat-v2ex
 
-## 卸载
-
-1. 关闭微信web开发者工具
-2. 项目文件夹下运行`./bin/wxdt uninstall`(删除桌面图标、微信web开发者工具配置目录)
-3. 删除项目文件夹
-
 
 ## 其它
 
 ### 免责声明
 微信开发者工具版权归腾讯公司所有，本项目指在交流学习之用，如有不当之处，请联系本人，邮箱：canyoutle@gmail.com
-
