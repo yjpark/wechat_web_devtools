@@ -1,0 +1,5 @@
+.eslinrc.yml
+/images
+/dist
+!/package.nw/*
+!/package.nw/node_modules

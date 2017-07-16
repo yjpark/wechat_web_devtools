@@ -16,11 +16,9 @@ function getVersion(versionFile) {
   return ''
 }
 
-
 function resolveProjectPath(f) {
   return path.resolve(__dirname, '../' + f)
 }
-
 
 function resolveDistPath(f) {
   return path.resolve(process.env.HOME, '.wechat_dev_tools/' + f)

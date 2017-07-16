@@ -51,6 +51,9 @@ rm -rf "$root_dir/package.nw"
 echo "$wcwd_package_dir"
 cp -r "$wcwd_package_dir" "$root_dir"
 
+# 解决node_modules被npmignore问题
+mv "$wcwd_package_dir/node_modules" "$wcwd_package_dir/real_node_module"
+
 bash "$root_dir/scripts/replace_package_nw.sh"
 
 # 链接wcc.exe wcsc.exe

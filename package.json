@@ -1,6 +1,6 @@
 {
   "name": "wxdt",
-  "version": "v0.19.191102",
+  "version": "v0.19.191104",
   "description": "linux下使用微信web开发者工具.",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,16 @@
     "type": "git",
     "url": "git+https://github.com/cytle/wechat_web_devtools.git"
   },
+  "files": [
+    "bin",
+    "scripts",
+    "nwjs_v",
+    "package_v",
+    "readme.md",
+    "package.nw",
+    "package.nw/node_modules",
+    "/package.nw/node_modules"
+  ],
   "keywords": [
     "linux",
     "微信开发者工具",
