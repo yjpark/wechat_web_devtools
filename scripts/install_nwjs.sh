@@ -12,7 +12,7 @@ nwjs_file="$tmp_dir/nwjs-v$nwjs_v.tar.gz"
 nwjs_dir="$tmp_dir/nwjs-sdk-v${nwjs_v}-linux-x64"
 nwjs_download="https://dl.nwjs.io/v$nwjs_v/nwjs-sdk-v${nwjs_v}-linux-x64.tar.gz"
 
-dist_dir="$root_dir/dist"
+dist_dir="$HOME/.wechat_dev_tools"
 
 mkdir -p $tmp_dir
 if [ ! -d "$nwjs_dir" ]; then
@@ -36,7 +36,7 @@ rm -rf "$dist_dir"
 mkdir -p "$dist_dir"
 
 cp -r "$nwjs_dir"/* "$dist_dir"
-ln -sf "../package.nw" "$dist_dir/package.nw"
+ln -sf "$root_dir/package.nw" "$dist_dir/package.nw"
 
 echo "$nwjs_v" > "$dist_dir/nwjs_version"
 

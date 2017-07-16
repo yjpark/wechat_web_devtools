@@ -10,16 +10,24 @@ var fs = require('fs')
 
 function getVersion(versionFile) {
   // 同步读取
-  var nwjs = path.resolve(__dirname, '../' + versionFile)
-  if (fs.existsSync(nwjs)) {
-    return fs.readFileSync(nwjs).toString().trim()
+  if (fs.existsSync(versionFile)) {
+    return fs.readFileSync(versionFile).toString().trim()
   }
   return ''
 }
 
-var nwjsVersion = getVersion('nwjs_v')
-var packageVersion = getVersion('package_v')
-var currentNwjsVersion = getVersion('dist/nwjs_version')
+
+function resolveProjectPath(f) {
+  return path.resolve(__dirname, '../' + f)
+}
+
+
+function resolveDistPath(f) {
+  return path.resolve(process.env.HOME, '.wechat_dev_tools/' + f)
+}
+
+var nwjsVersion = getVersion(resolveProjectPath('nwjs_v'))
+var packageVersion = getVersion(resolveProjectPath('package_v'))
 
 program
   .version(packageObj.version + '/package ' + packageVersion  + '/nwjs ' + nwjsVersion)
@@ -28,18 +36,20 @@ program
   .option('-D, --debug [port]', '开启debug模式', /^[1-9]\d{1,3}$/)
   .parse(process.argv)
 
+var currentNwjsVersion = getVersion(resolveDistPath('nwjs_version'))
+
 if (currentNwjsVersion !== nwjsVersion) {
   console.log('安装微信开发者工具对应nwjs版本：$nwjs_v')
-  shell.exec(path.resolve(__dirname, '../scripts/install_nwjs.sh'))
-  shell.exec(path.resolve(__dirname, '../scripts/install_weapp_vendor.sh'))
+  shell.exec(resolveProjectPath('scripts/install_nwjs.sh'))
+  shell.exec(resolveProjectPath('scripts/install_weapp_vendor.sh'))
   console.log('安装完成')
 }
 
 if (currentNwjsVersion === '') {
-  shell.exec(path.resolve(__dirname, '../scripts/install_desktop.sh'))
+  shell.exec(resolveProjectPath('scripts/install_desktop.sh'))
 }
 
-var execCommon = path.resolve(__dirname, '../dist/nw')
+var execCommon = resolveDistPath('nw')
 if (program.debug) {
   var port = program.debug === true
     ? 9222
