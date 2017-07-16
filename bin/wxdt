@@ -34,11 +34,12 @@ program
   .usage('[--debug [port]]')
   .description('启动微信web开发者工具')
   .option('-D, --debug [port]', '开启debug模式', /^[1-9]\d{1,3}$/)
+  .option('--install', '强制安装一次')
   .parse(process.argv)
 
 var currentNwjsVersion = getVersion(resolveDistPath('nwjs_version'))
 
-if (currentNwjsVersion !== nwjsVersion) {
+if (currentNwjsVersion !== nwjsVersion || program.install) {
   console.log('安装微信开发者工具对应nwjs版本：$nwjs_v')
   shell.exec(resolveProjectPath('scripts/install_nwjs.sh'))
   shell.exec(resolveProjectPath('scripts/install_weapp_vendor.sh'))
@@ -47,6 +48,10 @@ if (currentNwjsVersion !== nwjsVersion) {
 
 if (currentNwjsVersion === '') {
   shell.exec(resolveProjectPath('scripts/install_desktop.sh'))
+}
+
+if (program.install) {
+  shell.exit(0)
 }
 
 var execCommon = resolveDistPath('nw')
