@@ -1,6 +1,7 @@
 #! /bin/bash
 # 下载nwjs，构建项目
 
+echo '安装 nwjs'
 
 root_dir=$(cd `dirname $0`/.. && pwd -P)
 
@@ -39,4 +40,4 @@ ln -sf "../package.nw" "$dist_dir/package.nw"
 
 echo "$nwjs_v" > "$dist_dir/nwjs_version"
 
-echo "update nwjs success"
+echo "安装 nwjs ok"

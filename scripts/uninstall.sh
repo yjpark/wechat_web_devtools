@@ -6,7 +6,7 @@ root_dir=$(cd `dirname $0`/.. && pwd -P)
 # TODO 能不能删
 need_remove="$HOME/.local/share/applications/wechat_dev_tools.desktop"
 if [ -f $need_remove ]; then
-  echo "remove $need_remove"
+  echo "删除 $need_remove"
   rm -v $need_remove
 fi
 

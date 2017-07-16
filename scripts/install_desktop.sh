@@ -1,6 +1,8 @@
 #! /bin/bash
 # install desktop
 
+echo '安装 桌面图标'
+
 root_dir=$(cd `dirname $0`/.. && pwd -P)
 
 sed -r -e 's/\/path\/to/'${root_dir//\//\\\/}'/g' "$root_dir/desktop.simple" > "$root_dir/dist/wechat_dev_tools.desktop"
@@ -13,3 +15,5 @@ else
     cp "$root_dir/dist/wechat_dev_tools.desktop" $HOME/.local/share/applications/
   fi
 fi
+
+echo '安装 桌面图标 ok'
