@@ -12,7 +12,7 @@ nwjs_file="$tmp_dir/nwjs-v$nwjs_v.tar.gz"
 nwjs_dir="$tmp_dir/nwjs-sdk-v${nwjs_v}-linux-x64"
 nwjs_download="https://dl.nwjs.io/v$nwjs_v/nwjs-sdk-v${nwjs_v}-linux-x64.tar.gz"
 
-dist_dir="$HOME/.wechat_dev_tools"
+dist_dir="$root_dir/dist"
 
 mkdir -p $tmp_dir
 if [ ! -d "$nwjs_dir" ]; then

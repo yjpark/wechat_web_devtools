@@ -3,7 +3,7 @@
 root_dir=$(cd `dirname $0`/.. && pwd -P)
 
 dev_tools_config_dir="$HOME/.config/微信web开发者工具"
-dist_dir="$HOME/.wechat_dev_tools"
+dist_dir="$root_dir/dist"
 
 if [ ! -d "$dev_tools_config_dir" ]; then
   cd "$dist_dir";

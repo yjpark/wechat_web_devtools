@@ -4,7 +4,7 @@
 echo '安装 桌面图标'
 
 root_dir=$(cd `dirname $0`/.. && pwd -P)
-dist_dir="$HOME/.wechat_dev_tools"
+dist_dir="$root_dir/dist"
 
 sed -r -e 's/\/path\/to/'${root_dir//\//\\\/}'/g' "$root_dir/desktop.simple" > "$dist_dir/wechat_dev_tools.desktop"
 

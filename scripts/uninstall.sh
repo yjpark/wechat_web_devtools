@@ -11,7 +11,7 @@ if [ -f $need_remove ]; then
 fi
 
 # TODO 能不能删
-need_remove="$HOME/.wechat_dev_tools"
+need_remove="$root_dir/dist"
 if [ -d $need_remove ]; then
   chown -R $USER $need_remove
   rm -rfv $need_remove
