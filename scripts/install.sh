@@ -12,11 +12,9 @@ fi
 
 if [ "$cur_nwjs_v" != "$nwjs_v" ]; then
   echo "安装微信开发者工具对应nwjs版本：$nwjs_v"
-  bash "$root_dir/bin/update_nwjs.sh"
+  bash "$root_dir/scripts/install_nwjs.sh"
 fi
 
-cd "$root_dir/dist"
-
-bash "$root_dir/bin/replace_weapp_vendor.sh"
-bash "$root_dir/bin/install_desktop.sh"
+bash "$root_dir/scripts/install_weapp_vendor.sh"
+bash "$root_dir/scripts/install_desktop.sh"
 echo "安装完成"

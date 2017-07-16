@@ -20,8 +20,8 @@ if [ ! -d "$dev_tools_config_dir" ]; then
 fi
 
 if [ -d "$dev_tools_config_dir" ]; then
-  echo "cp -rfu $root_dir/bin/WeappVendor/* $dev_tools_config_dir/WeappVendor"
-  cp -rf $root_dir/bin/WeappVendor/* "$dev_tools_config_dir/WeappVendor" 2> /dev/null
+  echo "cp -rfu $root_dir/scripts/WeappVendor/* $dev_tools_config_dir/WeappVendor"
+  cp -rf $root_dir/scripts/WeappVendor/* "$dev_tools_config_dir/WeappVendor" 2> /dev/null
   echo "Success"
 else
   echo "Fail! Please reinstall"
