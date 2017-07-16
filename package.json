@@ -8,6 +8,7 @@
   "scripts": {
     "postinstall": "scripts/install.sh",
     "postuninstall": "scripts/unstall.sh",
+    "prepublishOnly": "eslint ./bin",
     "start": "bin/wxdt"
   },
   "bin": {
@@ -29,12 +30,11 @@
     "url": "https://github.com/cytle/wechat_web_devtools/issues"
   },
   "homepage": "https://github.com/cytle/wechat_web_devtools#readme",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-replace": "^0.6.1"
-  },
   "dependencies": {
     "commander": "^2.11.0",
     "shelljs": "^0.7.8"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0"
   }
 }
