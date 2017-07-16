@@ -6,8 +6,8 @@
   "description": "linux下使用微信web开发者工具.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "scripts/install.sh",
-    "postuninstall": "scripts/unstall.sh",
+    "install": "scripts/install.sh",
+    "preuninstall": "scripts/uninstall.sh",
     "prepublishOnly": "eslint ./bin",
     "start": "bin/wxdt"
   },
