@@ -18,13 +18,13 @@ onlineverdor_dir="$root_dir/package.nw/app/dist/weapp/onlinevendor"
 wcwd_download='https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki'
 package_v=$(http --headers $wcwd_download | grep -oP --color=never '(?<=wechat_web_devtools_)[\d\.]+(?=_x64\.exe)')
 
+echo "最新package_v: $package_v"
 
 if [ -z "$package_v" ]; then
   echo "下载版本为空"
   exit 1
 fi
 
-echo "最新package_v: $package_v"
 
 if [ "$package_v" = "$cur_package_v" ]; then
   echo "当前已经是最新版本"
