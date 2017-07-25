@@ -1,6 +1,6 @@
 {
   "name": "wxdt",
-  "version": "v0.19.191106",
+  "version": "v0.19.191107",
   "description": "linux下使用微信web开发者工具.",
   "main": "index.js",
   "scripts": {
