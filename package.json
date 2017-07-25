@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "install": "mv ./dist/package.nw/real_node_modules ./dist/package.nw/node_modules",
-    "preuninstall": "scripts/uninstall.sh",
+    "preuninstall": "sh ./scripts/uninstall.sh",
     "prepublishOnly": "eslint ./bin",
     "build": "sh ./scripts/build.sh",
     "start": "bin/wxdt"
