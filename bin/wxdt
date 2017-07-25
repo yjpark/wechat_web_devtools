@@ -46,6 +46,10 @@ if (program.install || !read(resolveDistPath('installed'))) {
   fs.writeSync(resolveDistPath('installed'), '1')
 }
 
+if (program.install) {
+  process.exit(0)
+}
+
 var execCommon = resolveDistPath('nw')
 if (program.debug) {
   var port = program.debug === true
