@@ -1,7 +1,4 @@
 #! /bin/bash
-# 下载nwjs，构建项目
-
-echo '安装 nwjs'
 
 root_dir=$(cd `dirname $0`/.. && pwd -P)
 
@@ -14,7 +11,11 @@ nwjs_download="https://dl.nwjs.io/v$nwjs_v/nwjs-sdk-v${nwjs_v}-linux-x64.tar.gz"
 
 dist_dir="$root_dir/dist"
 
+rm -rf "$dist_dir"
+
+mkdir -p "$dist_dir"
 mkdir -p $tmp_dir
+
 if [ ! -d "$nwjs_dir" ]; then
   if [ ! -f "$nwjs_file" ]; then
     echo "================================="
@@ -31,13 +32,7 @@ if [ ! -d "$nwjs_dir" ]; then
   cd "$root_dir"
 fi
 
+cp -rf "$nwjs_dir"/* "$dist_dir"
+cp -rf "$root_dir/package.nw" "$dist_dir/"
 
-rm -rf "$dist_dir"
-mkdir -p "$dist_dir"
-
-cp -r "$nwjs_dir"/* "$dist_dir"
-ln -sf "$root_dir/package.nw" "$dist_dir/package.nw"
-
-echo "$nwjs_v" > "$dist_dir/nwjs_version"
-
-echo "安装 nwjs ok"
+echo "打包完成"

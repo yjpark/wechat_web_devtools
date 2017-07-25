@@ -6,6 +6,7 @@
   "scripts": {
     "preuninstall": "scripts/uninstall.sh",
     "prepublishOnly": "eslint ./bin",
+    "build": "sh ./scripts/build.sh",
     "start": "bin/wxdt"
   },
   "bin": {

@@ -1,3 +1,7 @@
-.eslinrc.yml
-/images
-!/package.nw/*
+/*
+!/dist
+!/bin
+!/package.json
+!/readme.md
+!/nwjs_v
+!/package_v
