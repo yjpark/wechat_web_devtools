@@ -32,12 +32,18 @@ program
   .usage('[--debug [port]]')
   .description('启动微信web开发者工具')
   .option('-D, --debug [port]', '开启debug模式', /^[1-9]\d{1,3}$/)
+  .option('--install', '安装桌面图标和替换兼容性wcc/wcsc', /^[1-9]\d{1,3}$/)
   .parse(process.argv)
 
-if (!read(resolveDistPath('installed'))) {
+if (program.install || !read(resolveDistPath('installed'))) {
+  console.log('第一次运行')
+  console.log('安装桌面图标')
   shell.exec(resolveProjectPath('scripts/install_desktop.sh'))
+  console.log('替换兼容性wcc/wcsc')
   shell.exec(resolveProjectPath('scripts/install_weapp_vendor.sh'))
   console.log('安装完成')
+
+  fs.writeSync(resolveDistPath('installed'), '1')
 }
 
 var execCommon = resolveDistPath('nw')
