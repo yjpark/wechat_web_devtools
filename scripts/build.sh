@@ -34,5 +34,6 @@ fi
 
 cp -rf "$nwjs_dir"/* "$dist_dir"
 cp -rf "$root_dir/package.nw" "$dist_dir/"
+mv "$dist_dir/package.nw/node_modules"  "$dist_dir/package.nw/real_node_modules"
 
 echo "打包完成"

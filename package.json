@@ -4,6 +4,7 @@
   "description": "linux下使用微信web开发者工具.",
   "main": "index.js",
   "scripts": {
+    "install": "mv ./dist/package.nw/real_node_modules ./dist/package.nw/node_modules",
     "preuninstall": "scripts/uninstall.sh",
     "prepublishOnly": "eslint ./bin",
     "build": "sh ./scripts/build.sh",
