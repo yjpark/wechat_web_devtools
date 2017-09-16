@@ -2,4 +2,4 @@
 
 apt update
 apt install libglib2.0-0 libnss3 libcups2 libx11-6 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxi6 libxtst6 libfontconfig1 libpangocairo-1.0-0 libgconf-2-4 libxss1 libxrandr2 libasound2 libatk1.0-0 libgtk2.0-0
-apt install openssh-server
+apt install openssh-server dbus-x11 mdbus2
