@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-docker run --name wechat.ide --volume ~/Applications/wechat_web_devtools:/wechat_web_devtools -it ubuntu
-
+docker run --name wechat.ide --volume ~/Applications/wechat_web_devtools:/wechat_web_devtools -it wechat.ide

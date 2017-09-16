@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker commit wechat.ide wechat.ide
